@@ -11,7 +11,7 @@ public class MathServiceImpl implements MathService {
     private final Random random = new Random();
 
     @Override
-    public Question getRandomQuestion() {
+    public Question getRandomQuestions() {
         int max = 10;
         int a = random.nextInt(max);
         int b = random.nextInt(max);

@@ -27,13 +27,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+<!--        TODO: 08.06.2022 заменить h2 на PostgreSQL -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
