@@ -34,6 +34,6 @@ public class ExaminationController {
     }
 
     private String getUrl(Map.Entry<String, Integer> entry) {
-        return String.format("https://%s/api/questions?amount=%d", entry.getKey(), entry.getValue());
+        return String.format("http://%s/api/questions?amount=%d", entry.getKey(), entry.getValue());
     }
 }
