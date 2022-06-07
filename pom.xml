@@ -11,6 +11,7 @@
 
     <modules>
         <module>math-microservice</module>
+        <module>history-microservice</module>
     </modules>
 
 </project>
