@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  eureka-server:
+    image: chdmdev/discovery
+    healthcheck:
+      test: "cmd curl http://localhost:8761/actuator/health | exit 0 || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    environment:
+      - server.port=8761
+    ports:
+      - "8761:8761"
+
+  math:
+    image: chdmdev/math
+    healthcheck:
+      test: "cmd curl http://localhost:8082/actuator/health | exit 0 || exit 1"
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+    ports:
+      - "8082:8082"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    links:
+      - eureka-server
+
+  examination:
+    image: chdmdev/examination
+    healthcheck:
+      test: "cmd curl http://localhost:8080/actuator/health | exit 0 || exit 1"
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+    ports:
+      - "8080:8080"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    links:
+      - eureka-server

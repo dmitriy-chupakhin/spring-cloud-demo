@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="build images" type="CompoundRunConfigurationType">
+    <toRun name="discovery" type="docker-deploy" />
+    <toRun name="examination" type="docker-deploy" />
+    <toRun name="math" type="docker-deploy" />
+    <method v="2" />
+  </configuration>
+</component>
